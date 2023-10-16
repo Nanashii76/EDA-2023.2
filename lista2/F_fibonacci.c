@@ -1,19 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
+unsigned long long int fibonacci(int n) {
 
-long int fibonacci(int n) {
+    static unsigned long long mem[80 + 1] = { [0] = 1, [1] = 1, [2] = 1};
 
-    int *aux = &n;
-    aux = (long int *) malloc(81);
+    if (!mem[n])
+        mem[n] = fibonacci(n - 1) + fibonacci(n - 2);
 
-    if (n == 1 || n == 2) return 1;
-    else return *aux=(fibonacci(n-1) + fibonacci(n-2));
-
-}
-
-int main(){
-    int n;
-    scanf("%d", &n);
-
-    printf("%ld\n", fibonacci(n));
+    return mem[n];
 }
