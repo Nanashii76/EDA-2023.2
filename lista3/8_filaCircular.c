@@ -9,26 +9,19 @@ typedef struct {
 
 int enfileira (fila *f, int x) {
 
-    int cap = (f->fim+1)%f->N;
-
-    if (f->v[cap] == f->v[f->inicio]) {
-        return 0;
-    } else {
-       f->v[f->fim] = x;
-       f->fim++;
-       return 1;
-    }
-
+    if ((f->fim+1)%f->N == f->inicio) 
+        return 0; 
+    f->v[f->fim++] = x;
+    
+    if (f->fim == f->N) f->fim = 0;
+        return 1;
 }
 
 int desenfileira (fila *f, int *y) {
-
-    if (f == NULL) {
+    if (f->inicio == f->fim) 
         return 0;
-    } else {
-        *y=f->v[f->inicio];
-        f->inicio = (f->inicio+1)%f->N;
+    *y= f->v[f->inicio++];
+    
+    if (f->inicio == f->N) f->inicio = 0;
         return 1;
-    }
-
 }
