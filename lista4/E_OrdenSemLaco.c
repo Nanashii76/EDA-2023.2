@@ -11,24 +11,26 @@ void exch (int *a, int *b) {
 
 // implementando
 
-int aux = 0, contador = 0;
+int aux = 1, contador = 0;
 
 void ordena (int *v, int n) {
 
-    if (contador == n) return;
+    // caso base de parada
+    if (contador >= n) return;
 
-    if (v[n-aux] < v[n-aux-1]) {
-        exch(&v[n-aux-1],&v[n-aux]);
+    // ordenando o primeiro elemento do vetor
+    if (v[n-aux] < v[n-aux-1] && aux < n-contador) {
+        exch(&v[n-aux],&v[n-aux-1]);
         aux++;
         ordena(v,n);
     }
 
-    if (aux == n-contador) {
+    if (aux >= n - contador) {
+        aux = 1;
         contador++;
-        aux = 0;
         ordena(v,n);
     }
-    
+
     aux++;
     ordena(v,n);
 
