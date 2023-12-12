@@ -27,7 +27,7 @@ typedef struct pq_st {
 // inicializar a estrutura heap
 void PQinit (pq_st * PQ, int maxN) {
 
-    PQ->pq = malloc(sizeof(Item)*(maxN+1));
+    PQ->pq = malloc(sizeof(Item)*(maxN+1)); // armazenar com +1 pois não utilizamos o index 0
     PQ->N = 0;
 }
 
