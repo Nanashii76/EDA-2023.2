@@ -60,6 +60,15 @@ void imprime(celula *le) {
 }
 
 // adicionar no inicio
+void insere_inicio(celula *le, int x) {
+
+    celula *new = nova(x);
+    celula *aux = le->prox;
+
+    le->prox = new;
+    new->prox = aux;
+
+}
 
 // buscando
 
@@ -75,6 +84,8 @@ int main(void) {
     add(le,2);
     add(le,3);
     add(le,4);
+
+    insere_inicio(le,10);
 
     imprime(le);
 
